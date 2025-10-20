@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Bokhutlo Trading & Enterprise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            transition: all 0.3s;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav.scrolled {
+            background: rgba(30, 60, 114, 0.98);
+            padding: 0.7rem 5%;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            color: white;
+            padding: 10rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,106.7C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Services Overview */
+        .services-overview {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Categories */
+        .service-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-card h3 {
+            font-size: 1.8rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .category-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Detailed Services */
+        .detailed-services {
+            background: white;
+            padding: 6rem 5%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 5rem;
+        }
+
+        .service-tabs {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #e9ecef;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .service-details {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .service-details h3 {
+            font-size: 2rem;
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .service-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2a5298;
+        }
+
+        .feature-item h4 {
+            font-size: 1.3rem;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Service Process */
+        .service-process {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .process-step:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: #1e3c72;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .cta-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1e3c72;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">BOKHUTLO</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" style="background: rgba(255,255,255,0.1);">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Our Services</h1>
+        <p>Comprehensive solutions across four key divisions, designed to meet your specific needs with precision and excellence</p>
+    </section>
+
+    <section class="services-overview">
+        <div class="section-header">
+            <h2>Our Service Divisions</h2>
+            <p>From professional cleaning to construction, catering, and farming - we deliver integrated solutions that transform spaces, build futures, and nurture growth</p>
+        </div>
+
+        <div class="service-categories">
+            <div class="category-card">
+                <div class="category-icon">🧹</div>
+                <h3>Professional Cleaning</h3>
+                <p>Industry-leading cleaning solutions for hospitals, schools, offices, and industrial facilities. We ensure spotless environments that promote health and productivity.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🏗️</div>
+                <h3>Construction Services</h3>
+                <p>Complete building, renovation, and maintenance solutions for residential, commercial, and institutional clients. Quality craftsmanship that stands the test of time.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🍽️</div>
+                <h3>Catering Solutions</h3>
+                <p>Professional catering services that elevate every occasion with quality and presentation. From corporate events to institutional requirements.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🌾</div>
+                <h3>Farming Division</h3>
+                <p>Sustainable agricultural practices focused on livestock farming with plans for expansion. Quality assurance and farm management expertise.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="detailed-services">
+        <div class="section-header">
+            <h2>Service Details</h2>
+            <p>Explore our comprehensive range of services within each division</p>
+        </div>
+
+        <div class="service-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-tab="cleaning">Cleaning Services</button>
+                <button class="tab-btn" data-tab="construction">Construction</button>
+                <button class="tab-btn" data-tab="catering">Catering</button>
+                <button class="tab-btn" data-tab="farming">Farming</button>
+            </div>
+
+            <div class="tab-content active" id="cleaning-tab">
+                <div class="service-details">
+                    <h3>Professional Cleaning Services</h3>
+                    <p>Our professional cleaning division offers comprehensive solutions tailored to various environments. We use industry-best practices and high-quality cleaning agents to ensure optimal results.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">📅</div>
+                            <h4>Planned Maintenance</h4>
+                            <p>Scheduled cleaning programs designed to maintain pristine conditions with minimal disruption to your operations.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌅</div>
+                            <h4>Daily Cleaning</h4>
+                            <p>Regular maintenance services to keep your facilities clean, organized, and presentable every day.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔍</div>
+                            <h4>Deep Cleaning</h4>
+                            <p>Thorough, intensive cleaning targeting hard-to-reach areas and built-up grime for a completely refreshed environment.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🧽</div>
+                            <h4>Carpet Cleaning</h4>
+                            <p>Specialized carpet care using professional equipment to remove stains, odors, and extend carpet life.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">👨‍🍳</div>
+                            <h4>Kitchen Cleaning</h4>
+                            <p>Sanitization and deep cleaning of commercial and institutional kitchens to meet health and safety standards.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🧼</div>
+                            <h4>Floor Cleaning</h4>
+                            <p>Comprehensive floor care including stripping, waxing, polishing, and maintenance for all floor types.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏭</div>
+                            <h4>Industrial Cleaning</h4>
+                            <p>Specialized cleaning solutions for industrial facilities, warehouses, and manufacturing plants.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛒</div>
+                            <h4>Cleaning Supplies</h4>
+                            <p>Supply of quality cleaning agents, equipment, and utensils to meet all your maintenance needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="construction-tab">
+                <div class="service-details">
+                    <h3>Construction Services</h3>
+                    <p>Our construction division delivers comprehensive building, renovation, and maintenance solutions with a commitment to quality, safety, and timely completion.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🏠</div>
+                            <h4>Residential Construction</h4>
+                            <p>Custom home building, renovations, and extensions tailored to your lifestyle and preferences.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏢</div>
+                            <h4>Commercial Projects</h4>
+                            <p>Office buildings, retail spaces, and commercial facilities built to specification and budget.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏫</div>
+                            <h4>Institutional Facilities</h4>
+                            <p>Construction and renovation of schools, hospitals, and government buildings with specialized requirements.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛠️</div>
+                            <h4>Renovations & Upgrades</h4>
+                            <p>Transforming existing spaces through strategic renovations, modernizations, and functional upgrades.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔧</div>
+                            <h4>Maintenance Programs</h4>
+                            <p>Preventive and corrective maintenance plans to preserve building integrity and functionality.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="catering-tab">
+                <div class="service-details">
+                    <h3>Catering Solutions</h3>
+                    <p>Our catering services combine culinary excellence with professional presentation, creating memorable dining experiences for all types of events and functions.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">💼</div>
+                            <h4>Corporate Events</h4>
+                            <p>Professional catering for meetings, conferences, corporate functions, and business gatherings.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎉</div>
+                            <h4>Special Occasions</h4>
+                            <p>Memorable catering for weddings, celebrations, anniversaries, and private parties.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏥</div>
+                            <h4>Institutional Catering</h4>
+                            <p>Reliable meal services for schools, hospitals, and other institutions with specific dietary requirements.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📋</div>
+                            <h4>Menu Customization</h4>
+                            <p>Tailored menus developed to suit your event theme, dietary needs, and budget considerations.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🍽️</div>
+                            <h4>Full-Service Setup</h4>
+                            <p>Complete catering service including setup, serving, and cleanup for a seamless experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="farming-tab">
+                <div class="service-details">
+                    <h3>Farming Division</h3>
+                    <p>Our farming operations focus on sustainable practices and quality production, with current emphasis on livestock farming and plans for agricultural diversification.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🐄</div>
+                            <h4>Livestock Farming</h4>
+                            <p>Professional livestock management focusing on animal welfare, health, and sustainable practices.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌱</div>
+                            <h4>Sustainable Practices</h4>
+                            <p>Environmentally conscious farming methods that prioritize long-term sustainability and resource conservation.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✅</div>
+                            <h4>Quality Assurance</h4>
+                            <p>Rigorous quality control measures ensuring high standards across all farming operations.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📈</div>
+                            <h4>Agricultural Expansion</h4>
+                            <p>Strategic growth plans to diversify into additional agricultural ventures beyond current livestock operations.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">👨‍🌾</div>
+                            <h4>Farm Management</h4>
+                            <p>Comprehensive farm management services optimizing operations for productivity and profitability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-process">
+        <div class="section-header">
+            <h2 style="color: white;">Our Service Process</h2>
+            <p style="color: rgba(255,255,255,0.9);">A streamlined approach to delivering excellence across all our services</p>
+        </div>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-icon">📞</div>
+                <h4>Consultation</h4>
+                <p>We begin with understanding your specific needs, requirements, and expectations.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-icon">📋</div>
+                <h4>Customized Plan</h4>
+                <p>We develop a tailored solution that addresses your unique situation and goals.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-icon">✅</div>
+                <h4>Approval</h4>
+                <p>We present our proposal for your review and approval before proceeding.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-icon">🚀</div>
+                <h4>Implementation</h4>
+                <p>Our professional team executes the plan with precision and attention to detail.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-icon">⭐</div>
+                <h4>Quality Check</h4>
+                <p>We conduct thorough quality assurance to ensure exceptional results.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h3>Ready to Experience Our Services?</h3>
+        <p>Whether you need professional cleaning, construction expertise, catering solutions, or farming services, we're here to deliver excellence tailored to your needs.</p>
+        <a href="index.html#contact" class="btn btn-primary">Get in Touch Today</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bokhutlo Trading and Enterprise (Pty) Ltd. All rights reserved.</p>
+        <p style="margin-top: 1rem; opacity: 0.8;">Excellence Across Every Industry</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.category-card, .feature-item, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
