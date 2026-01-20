@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Bokhutlo Trading & Enterprise</title>
-        <link rel="icon" href="assets/BokhutloLogo.png" type="image/x-icon">
-
+    <title>About Us - Bokhutlo Farming Enterprise</title>
+    <link rel="icon" href="assets/BokhutloLogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,12 +13,22 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-green: #2d5a27;
+            --secondary-green: #4a7c3a;
+            --accent-gold: #d4af37;
+            --light-green: #e9f5e3;
+            --dark-green: #1e3c1a;
+            --soil-brown: #8d6e63;
+            --sky-blue: #87CEEB;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2c3e50;
+            color: #333;
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: #f8f9fa;
+            background-color: #f9fff6;
         }
 
         /* Navigation */
@@ -26,17 +36,19 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(30, 60, 114, 0.95);
+            background: rgba(45, 90, 39, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
             z-index: 1000;
             transition: all 0.3s;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         nav.scrolled {
-            background: rgba(30, 60, 114, 0.98);
+            background: rgba(30, 60, 26, 0.98);
             padding: 0.7rem 5%;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
         }
 
         .nav-container {
@@ -48,11 +60,24 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+            display: flex;
+            align-items: center;
             text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
             letter-spacing: 1px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            margin-right: 10px;
+            transition: transform 0.5s;
+        }
+
+        .logo:hover .logo-img {
+            transform: rotate(15deg) scale(1.1);
         }
 
         .nav-links {
@@ -66,19 +91,41 @@
             text-decoration: none;
             transition: all 0.3s;
             padding: 0.5rem 1rem;
-            border-radius: 5px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.2);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
         }
 
         .nav-links a:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
+            color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            background: linear-gradient(rgba(30, 60, 26, 0.85), rgba(45, 90, 39, 0.9)), 
+                        url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center;
+            background-size: cover;
             color: white;
-            padding: 10rem 5% 6rem;
+            padding: 12rem 5% 8rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -87,29 +134,33 @@
         .page-header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             bottom: 0;
-            background: url('./assets/hero2.png') no-repeat bottom;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23f9fff6"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23f9fff6"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23f9fff6"/></svg>');
             background-size: cover;
-            opacity: 0.3;
         }
 
         .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
+            font-size: 1.3rem;
+            max-width: 800px;
             margin: 0 auto;
             opacity: 0.9;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 1s ease 0.3s backwards;
+            color: var(--accent-gold);
+            font-weight: 300;
         }
 
         /* About Content */
@@ -122,17 +173,31 @@
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            color: #1e3c72;
+            font-size: 3rem;
+            color: var(--dark-green);
             margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-gold);
         }
 
         .section-header p {
             font-size: 1.2rem;
-            color: #6c757d;
+            color: #5a7d52;
             max-width: 700px;
             margin: 0 auto;
         }
@@ -148,10 +213,12 @@
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            border-top: 5px solid transparent;
+            z-index: 1;
         }
 
         .about-card::before {
@@ -160,44 +227,102 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #1e3c72, #2a5298);
-            transform: scaleX(0);
-            transition: transform 0.3s;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
         }
 
         .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(45, 90, 39, 0.2);
+            border-top: 5px solid var(--accent-gold);
+            color: white;
         }
 
         .about-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .about-card:hover h3,
+        .about-card:hover p,
+        .about-card:hover li {
+            color: white;
+        }
+
+        .about-card:hover .about-icon {
+            transform: scale(1.3) rotate(10deg);
+            color: var(--accent-gold);
         }
 
         .about-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            transition: all 0.4s;
+            display: inline-block;
         }
 
         .about-card h3 {
             font-size: 1.8rem;
-            color: #1e3c72;
+            color: var(--dark-green);
             margin-bottom: 1rem;
+            transition: color 0.4s;
         }
 
         .about-card p {
             color: #555;
             line-height: 1.7;
+            margin-bottom: 1rem;
+            transition: color 0.4s;
+        }
+
+        .about-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .about-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+            transition: color 0.4s;
+        }
+
+        .about-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-weight: bold;
+            transition: color 0.4s;
+        }
+
+        .about-card:hover li::before {
+            color: var(--accent-gold);
         }
 
         /* Founder Section */
         .founder-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             color: white;
             padding: 6rem 5%;
             border-radius: 20px;
             margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-section::before {
+            content: '🌾';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .founder-container {
@@ -207,33 +332,56 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .founder-image {
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
-            height: 300px;
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
             backdrop-filter: blur(10px);
             font-size: 5rem;
+            border: 3px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .founder-image:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-gold);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .founder-image::after {
+            content: '👩‍🌾';
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            z-index: 0;
         }
 
         .founder-info h3 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: white;
         }
 
         .founder-info h4 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
             opacity: 0.9;
+            color: var(--accent-gold);
         }
 
         .founder-info p {
             line-height: 1.7;
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
         /* Growth Plans */
@@ -241,8 +389,23 @@
             padding: 6rem 5%;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
             margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--light-green);
+        }
+
+        .growth-plans::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23e9f5e3" fill-opacity="0.3" d="M0,0 L100,0 L100,100 Z" /><path fill="%23e9f5e3" fill-opacity="0.3" d="M0,0 L0,100 L100,100 Z" /></svg>');
+            background-size: 80px;
+            z-index: 0;
         }
 
         .plans-grid {
@@ -250,46 +413,188 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .plan-item {
             text-align: center;
-            padding: 2rem;
-            background: #f8f9fa;
+            padding: 2.5rem 2rem;
+            background: var(--light-green);
             border-radius: 15px;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45, 90, 39, 0.9), rgba(74, 124, 58, 0.9));
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 0;
         }
 
         .plan-item:hover {
-            background: #e9ecef;
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.2);
+            color: white;
+        }
+
+        .plan-item:hover::before {
+            opacity: 1;
+        }
+
+        .plan-item:hover h4,
+        .plan-item:hover p,
+        .plan-item:hover .plan-icon {
+            color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .plan-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            color: #2a5298;
+            color: var(--primary-green);
+            transition: all 0.4s;
+            display: inline-block;
+        }
+
+        .plan-item:hover .plan-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent-gold);
         }
 
         .plan-item h4 {
-            font-size: 1.3rem;
-            color: #1e3c72;
+            font-size: 1.5rem;
+            color: var(--dark-green);
             margin-bottom: 1rem;
+            transition: color 0.4s;
+        }
+
+        .plan-item p {
+            color: #666;
+            font-size: 1rem;
+            transition: color 0.4s;
+        }
+
+        /* Journey Timeline */
+        .journey-timeline {
+            padding: 6rem 5%;
+            background: var(--light-green);
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--secondary-green);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            width: 45%;
+            transition: all 0.4s;
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 5px solid var(--accent-gold);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(45, 90, 39, 0.2);
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            background: var(--primary-green);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .timeline-content h4 {
+            color: var(--dark-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
         }
 
         /* Call to Action */
         .cta-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             color: white;
             padding: 5rem 5%;
             text-align: center;
             border-radius: 20px;
             margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🌱';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .cta-section h3 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section p {
@@ -297,6 +602,8 @@
             max-width: 700px;
             margin: 0 auto 2rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
@@ -309,24 +616,59 @@
             text-decoration: none;
             display: inline-block;
             font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
         }
 
         .btn-primary {
-            background: white;
-            color: #1e3c72;
+            background: var(--accent-gold);
+            color: var(--dark-green);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
         }
 
         /* Footer */
         footer {
-            background: #1e3c72;
+            background: var(--dark-green);
             color: white;
             padding: 3rem 5%;
             text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold), var(--secondary-green));
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         @keyframes fadeInUp {
@@ -340,9 +682,19 @@
             }
         }
 
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.5rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
             }
 
             .nav-links {
@@ -352,72 +704,136 @@
             .founder-container {
                 grid-template-columns: 1fr;
             }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                margin-left: 60px;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-year {
+                left: 0;
+                transform: translateX(0);
+            }
         }
     </style>
 </head>
 <body>
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo"><img src="assets/BokhutloLogo.png" height="80" width="80"></a>
+            <a href="index.html" class="logo">
+                <img src="assets/BokhutloLogo.png" alt="Bokhutlo Farming Logo" class="logo-img">
+                Bokhutlo Farming
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                                <li><a href="about.html" style="background: rgba(255,255,255,0.1);">About</a></li>
+                                <li><a href="about.html" style="background: rgba(212, 175, 55, 0.2);">About</a></li>
 
+                <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="page-header">
-        <h1>Our Story</h1>
-        <p>From humble beginnings to becoming a trusted multi-service provider, discover the journey of Bokhutlo Trading and Enterprise</p>
+        <h1>Our Farming Story</h1>
+        <p>From humble seeds to bountiful harvests, discover the journey of Bokhutlo Farming Enterprise</p>
     </section>
 
     <section class="about-content">
         <div class="section-header">
-            <h2>About Bokhutlo Trading & Enterprise</h2>
-            <p>A dynamic and diversified company committed to excellence across multiple industries</p>
+            <h2>About Bokhutlo Farming Enterprise</h2>
+            <p>Rooted in tradition, growing with innovation</p>
         </div>
 
         <div class="about-grid">
             <div class="about-card">
-                <div class="about-icon">🏢</div>
-                <h3>Company Overview</h3>
-                <p>Bokhutlo Trading and Enterprise (Pty) Ltd is a dynamic and diversified company providing professional cleaning, farming, construction, and catering solutions. Founded by Mary Baitsiwe, the company is dedicated to delivering high-quality services and products to schools, hospitals, businesses, households, and institutions.</p>
-                <p>Although currently operating from a home-based facility, Bokhutlo Trading and Enterprise is driven by efficiency, reliability, and a commitment to excellence, ensuring clients receive consistent value and superior results.</p>
+                <div class="about-icon">🌾</div>
+                <h3>Our Farming Philosophy</h3>
+                <p>Bokhutlo Farming Enterprise is a dedicated agricultural company that believes in sustainable farming practices that honor the land while producing high-quality food. Founded by Mary Baitsiwe, our farm combines traditional farming wisdom with modern techniques to create a model of responsible agriculture.</p>
+                <p>We operate from our family-owned land in Kome Village, where we've cultivated not just crops, but relationships with our community and respect for our environment.</p>
             </div>
 
             <div class="about-card">
-                <div class="about-icon">📈</div>
-                <h3>Business Model</h3>
-                <p>The company operates through a direct order-and-delivery model, enabling quick turnaround times and efficient service delivery. This approach allows us to be responsive to client needs while maintaining high standards of quality.</p>
-                <p>As financial capacity grows, plans are in place to establish a dedicated facility to enhance accessibility, streamline operations, and improve customer experience.</p>
+                <div class="about-icon">🤲</div>
+                <h3>Our Approach</h3>
+                <p>We practice a holistic approach to farming that considers the entire ecosystem. Our methods prioritize soil health, water conservation, and biodiversity while maintaining productive yields.</p>
+                <p>As our resources grow, we're committed to expanding our sustainable practices and investing in technologies that will help us farm more efficiently while reducing our environmental footprint.</p>
             </div>
 
             <div class="about-card">
                 <div class="about-icon">⚡</div>
-                <h3>Competitive Advantage</h3>
-                <p>Our competitive edge comes from several key factors:</p>
-                <ul style="margin-top: 1rem; list-style: none;">
-                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">✓ Competitive pricing through bulk sourcing from trusted manufacturers</li>
-                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">✓ Proven track record of quality services and visible results</li>
-                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">✓ Tailored solutions designed around specific client needs</li>
-                    <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">✓ A professional, well-trained workforce capable of servicing complex environments</li>
+                <h3>Why Choose Our Farm</h3>
+                <p>Our commitment to excellence sets us apart in the agricultural sector:</p>
+                <ul style="margin-top: 1rem;">
+                    <li>Regenerative farming practices that improve soil health</li>
+                    <li>Ethical livestock management with animal welfare as priority</li>
+                    <li>Direct relationships with local markets and consumers</li>
+                    <li>Commitment to preserving traditional farming knowledge</li>
+                    <li>Investment in sustainable water management systems</li>
                 </ul>
+            </div>
+        </div>
+
+        <div class="journey-timeline">
+            <div class="section-header">
+                <h2>Our Farming Journey</h2>
+                <p>The milestones that have shaped our growth</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>The Beginning</h4>
+                        <p>Started with a small plot of family land, focusing on subsistence farming and local market sales.</p>
+                    </div>
+                    <div class="timeline-year">2015</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Livestock Integration</h4>
+                        <p>Introduced cattle and poultry to create a more diversified and sustainable farming system.</p>
+                    </div>
+                    <div class="timeline-year">2018</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Formal Enterprise</h4>
+                        <p>Registered as Bokhutlo Farming Enterprise (Pty) Ltd and began supplying to regional markets.</p>
+                    </div>
+                    <div class="timeline-year">2020</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Sustainable Expansion</h4>
+                        <p>Implemented irrigation systems and began practicing crop rotation and soil conservation techniques.</p>
+                    </div>
+                    <div class="timeline-year">2023</div>
+                </div>
             </div>
         </div>
 
         <div class="founder-section">
             <div class="founder-container">
                 <div class="founder-image">
-                    👤
+                    <!-- Farmer icon would be here -->
                 </div>
                 <div class="founder-info">
                     <h3>Mary Baitsiwe</h3>
-                    <h4>Founder & Owner</h4>
-                    <p>Mary Baitsiwe established Bokhutlo Trading and Enterprise with a vision to provide integrated solutions that transform spaces, build futures, and nurture growth. Her leadership and commitment to excellence have been the driving force behind the company's success.</p>
-                    <p>Under her guidance, Bokhutlo has grown from a home-based operation to a trusted provider serving schools, hospitals, businesses, and institutions across the region.</p>
+                    <h4>Founder & Head Farmer</h4>
+                    <p>Mary Baitsiwe established Bokhutlo Farming Enterprise with a deep respect for the land passed down through generations. Growing up in a farming family, she learned the importance of sustainable practices and community support long before these became mainstream concepts.</p>
+                    <p>Her vision extends beyond profit to creating a farming model that can be sustained for generations, providing not just food but also employment and education for her community. Under her leadership, Bokhutlo has become a symbol of what small-scale, sustainable farming can achieve.</p>
+                    <p>"Farming isn't just a business—it's our connection to the earth, our heritage, and our responsibility to future generations."</p>
                 </div>
             </div>
         </div>
@@ -425,43 +841,45 @@
         <div class="growth-plans">
             <div class="section-header">
                 <h2>Future Growth Plans</h2>
-                <p>Our roadmap for expansion and continued excellence</p>
+                <p>Cultivating a sustainable future for our farm and community</p>
             </div>
             <div class="plans-grid">
                 <div class="plan-item">
-                    <div class="plan-icon">🏭</div>
-                    <h4>Dedicated Facility</h4>
-                    <p>Acquiring a dedicated operational facility to enhance accessibility and streamline operations</p>
+                    <div class="plan-icon">🚜</div>
+                    <h4>Farm Infrastructure</h4>
+                    <p>Investing in modern farming equipment and storage facilities to increase efficiency and reduce post-harvest losses.</p>
                 </div>
                 <div class="plan-item">
-                    <div class="plan-icon">🌱</div>
-                    <h4>Farming Diversification</h4>
-                    <p>Expanding the farming division beyond livestock into additional agricultural ventures</p>
+                    <div class="plan-icon">🌿</div>
+                    <h4>Organic Certification</h4>
+                    <p>Pursuing official organic certification for our produce to access premium markets and validate our sustainable practices.</p>
                 </div>
                 <div class="plan-item">
-                    <div class="plan-icon">🏗️</div>
-                    <h4>Construction Growth</h4>
-                    <p>Strengthening our position in the construction sector with expanded capabilities</p>
+                    <div class="plan-icon">🏫</div>
+                    <h4>Farm Education Center</h4>
+                    <p>Establishing a learning center to share sustainable farming techniques with the local community and aspiring farmers.</p>
                 </div>
                 <div class="plan-item">
-                    <div class="plan-icon">🍽️</div>
-                    <h4>Catering Expansion</h4>
-                    <p>Growing our catering services to reach more corporate and institutional clients</p>
+                    <div class="plan-icon">🛒</div>
+                    <h4>Farm-to-Table Store</h4>
+                    <p>Opening a direct sales outlet to connect consumers with our fresh produce and value-added farm products.</p>
                 </div>
             </div>
-            <p style="text-align: center; margin-top: 2rem; font-style: italic;">Bokhutlo Trading and Enterprise is focused on scaling operations to expand its impact and client reach across South Africa, further strengthening the company's position as a multi-service provider.</p>
+            <p style="text-align: center; margin-top: 2rem; font-style: italic; position: relative; z-index: 1;">Bokhutlo Farming Enterprise is committed to growing in a way that benefits not just our business, but our community and environment. We believe that the future of farming lies in balancing productivity with sustainability.</p>
         </div>
 
         <div class="cta-section">
-            <h3>Ready to Partner with Us?</h3>
-            <p>Whether you need professional cleaning, construction services, catering, or farming solutions, we're here to deliver excellence.</p>
+            <h3>Interested in Our Farm-Fresh Products?</h3>
+            <p>Whether you're looking for fresh produce, ethically raised meat, or partnership opportunities, we're here to connect you with quality farm products.</p>
             <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Bokhutlo Trading and Enterprise (Pty) Ltd. All rights reserved.</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">Excellence Across Every Industry</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Bokhutlo Farming Enterprise (Pty) Ltd. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">Sustainable Farming for Future Generations</p>
+        </div>
     </footer>
 
     <script>
@@ -475,7 +893,7 @@
             }
         });
 
-        // Smooth scrolling
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -500,15 +918,43 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    
+                    // Special animation for timeline items
+                    if (entry.target.classList.contains('timeline-item')) {
+                        entry.target.style.transitionDelay = '0.2s';
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.about-card, .plan-item').forEach(el => {
+        // Observe all cards for animation
+        document.querySelectorAll('.about-card, .plan-item, .timeline-item, .timeline-content').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
+        });
+
+        // Add hover effect to CTA buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.animation = 'pulse 0.5s';
+            });
+            
+            btn.addEventListener('animationend', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Timeline item hover effects
+        document.querySelectorAll('.timeline-content').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
     </script>
 </body>

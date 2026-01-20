@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Bokhutlo Trading & Enterprise</title>
+    <title>Our Services - Bokhutlo Farming Enterprise</title>
     <link rel="icon" href="assets/BokhutloLogo.png" type="image/x-icon">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,12 +13,22 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-green: #2d5a27;
+            --secondary-green: #4a7c3a;
+            --accent-gold: #d4af37;
+            --light-green: #e9f5e3;
+            --dark-green: #1e3c1a;
+            --soil-brown: #8d6e63;
+            --sky-blue: #87CEEB;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2c3e50;
+            color: #333;
             line-height: 1.6;
             overflow-x: hidden;
-            background-color: #f8f9fa;
+            background-color: #f9fff6;
         }
 
         /* Navigation */
@@ -27,17 +36,19 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(30, 60, 114, 0.95);
+            background: rgba(45, 90, 39, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
             z-index: 1000;
             transition: all 0.3s;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         nav.scrolled {
-            background: rgba(30, 60, 114, 0.98);
+            background: rgba(30, 60, 26, 0.98);
             padding: 0.7rem 5%;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
         }
 
         .nav-container {
@@ -49,11 +60,24 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+            display: flex;
+            align-items: center;
             text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
             letter-spacing: 1px;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            margin-right: 10px;
+            transition: transform 0.5s;
+        }
+
+        .logo:hover .logo-img {
+            transform: rotate(15deg) scale(1.1);
         }
 
         .nav-links {
@@ -67,19 +91,41 @@
             text-decoration: none;
             transition: all 0.3s;
             padding: 0.5rem 1rem;
-            border-radius: 5px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 175, 55, 0.2);
+            transition: left 0.4s;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
         }
 
         .nav-links a:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-2px);
+            color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            background: linear-gradient(rgba(30, 60, 26, 0.85), rgba(45, 90, 39, 0.9)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center;
+            background-size: cover;
             color: white;
-            padding: 10rem 5% 6rem;
+            padding: 12rem 5% 8rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -88,29 +134,33 @@
         .page-header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             bottom: 0;
-            background: url('./assets/heroo1.png') no-repeat bottom;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23f9fff6"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23f9fff6"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23f9fff6"/></svg>');
             background-size: cover;
-            opacity: 0.3;
         }
 
         .page-header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
+            font-size: 1.3rem;
+            max-width: 800px;
             margin: 0 auto;
             opacity: 0.9;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 1s ease 0.3s backwards;
+            color: var(--accent-gold);
+            font-weight: 300;
         }
 
         /* Services Overview */
@@ -123,17 +173,31 @@
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+            position: relative;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            color: #1e3c72;
+            font-size: 3rem;
+            color: var(--dark-green);
             margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-gold);
         }
 
         .section-header p {
             font-size: 1.2rem;
-            color: #6c757d;
+            color: #5a7d52;
             max-width: 700px;
             margin: 0 auto;
         }
@@ -150,11 +214,13 @@
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 5px solid transparent;
+            z-index: 1;
         }
 
         .category-card::before {
@@ -163,35 +229,54 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #1e3c72, #2a5298);
-            transform: scaleX(0);
-            transition: transform 0.3s;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
         }
 
         .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(45, 90, 39, 0.2);
+            border-top: 5px solid var(--accent-gold);
+            color: white;
         }
 
         .category-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
+        }
+
+        .category-card:hover h3,
+        .category-card:hover p,
+        .category-card:hover .category-icon {
+            color: white;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.3) rotate(10deg);
+            color: var(--accent-gold);
         }
 
         .category-icon {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            transition: all 0.4s;
+            display: inline-block;
         }
 
         .category-card h3 {
             font-size: 1.8rem;
-            color: #1e3c72;
+            color: var(--dark-green);
             margin-bottom: 1rem;
+            transition: color 0.4s;
         }
 
         .category-card p {
             color: #555;
             line-height: 1.7;
+            transition: color 0.4s;
         }
 
         /* Detailed Services */
@@ -199,13 +284,30 @@
             background: white;
             padding: 6rem 5%;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
             margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--light-green);
+        }
+
+        .detailed-services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23e9f5e3" fill-opacity="0.3" d="M0,0 L100,0 L100,100 Z" /><path fill="%23e9f5e3" fill-opacity="0.3" d="M0,0 L0,100 L100,100 Z" /></svg>');
+            background-size: 80px;
+            z-index: 0;
         }
 
         .service-tabs {
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .tab-buttons {
@@ -218,23 +320,43 @@
 
         .tab-btn {
             padding: 1rem 2rem;
-            background: #f8f9fa;
+            background: var(--light-green);
             border: none;
             border-radius: 50px;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 600;
-            color: #555;
+            color: var(--dark-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .tab-btn:hover::before {
+            left: 100%;
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
             color: white;
+            box-shadow: 0 5px 20px rgba(45, 90, 39, 0.3);
         }
 
         .tab-btn:hover:not(.active) {
-            background: #e9ecef;
+            background: #d4e7cc;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .tab-content {
@@ -247,16 +369,46 @@
         }
 
         .service-details {
-            background: #f8f9fa;
+            background: var(--light-green);
             padding: 3rem;
             border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .service-details:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
         }
 
         .service-details h3 {
-            font-size: 2rem;
-            color: #1e3c72;
+            font-size: 2.2rem;
+            color: var(--dark-green);
             margin-bottom: 1.5rem;
             text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .service-details h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-gold);
+        }
+
+        .service-details > p {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #5a7d52;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .service-features {
@@ -268,36 +420,93 @@
 
         .feature-item {
             background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            text-align: center;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45, 90, 39, 0.9), rgba(74, 124, 58, 0.9));
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 0;
         }
 
         .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(45, 90, 39, 0.2);
+            border-color: var(--accent-gold);
+            color: white;
+        }
+
+        .feature-item:hover::before {
+            opacity: 1;
+        }
+
+        .feature-item:hover h4,
+        .feature-item:hover p,
+        .feature-item:hover .feature-icon {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent-gold);
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: #2a5298;
+            color: var(--primary-green);
+            transition: all 0.4s;
+            display: inline-block;
         }
 
         .feature-item h4 {
-            font-size: 1.3rem;
-            color: #1e3c72;
+            font-size: 1.4rem;
+            color: var(--dark-green);
             margin-bottom: 0.5rem;
+            transition: color 0.4s;
         }
 
-        /* Service Process */
-        .service-process {
+        .feature-item p {
+            color: #666;
+            font-size: 1rem;
+            transition: color 0.4s;
+        }
+
+        /* Farming Process */
+        .farming-process {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             color: white;
             border-radius: 20px;
             margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .farming-process::before {
+            content: '🌱';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .process-steps {
@@ -306,21 +515,26 @@
             gap: 2rem;
             max-width: 1000px;
             margin: 3rem auto 0;
+            position: relative;
+            z-index: 1;
         }
 
         .process-step {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             background: rgba(255,255,255,0.1);
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            transition: all 0.4s;
             position: relative;
+            border: 2px solid transparent;
         }
 
         .process-step:hover {
             background: rgba(255,255,255,0.15);
-            transform: translateY(-5px);
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .step-number {
@@ -330,39 +544,131 @@
             transform: translateX(-50%);
             width: 40px;
             height: 40px;
-            background: white;
-            color: #1e3c72;
+            background: var(--accent-gold);
+            color: var(--dark-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.4s;
+        }
+
+        .process-step:hover .step-number {
+            transform: translateX(-50%) scale(1.2);
+            background: white;
         }
 
         .step-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s;
+        }
+
+        .process-step:hover .step-icon {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--accent-gold);
         }
 
         .process-step h4 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
+            color: white;
+        }
+
+        .process-step p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 6rem 5%;
+            background: var(--light-green);
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border-left: 5px solid var(--secondary-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.15);
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        .benefit-card h4 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .benefit-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .benefit-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-weight: bold;
         }
 
         /* Call to Action */
         .cta-section {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             color: white;
             padding: 5rem 5%;
             text-align: center;
             border-radius: 20px;
             margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🌾';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .cta-section h3 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section p {
@@ -370,6 +676,8 @@
             max-width: 700px;
             margin: 0 auto 2rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         .btn {
@@ -382,24 +690,59 @@
             text-decoration: none;
             display: inline-block;
             font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
         }
 
         .btn-primary {
-            background: white;
-            color: #1e3c72;
+            background: var(--accent-gold);
+            color: var(--dark-green);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
         }
 
         /* Footer */
         footer {
-            background: #1e3c72;
+            background: var(--dark-green);
             color: white;
             padding: 3rem 5%;
             text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-gold), var(--secondary-green));
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         @keyframes fadeInUp {
@@ -422,9 +765,19 @@
             }
         }
 
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.5rem;
+            }
+
+            .page-header p {
+                font-size: 1.1rem;
             }
 
             .nav-links {
@@ -440,57 +793,68 @@
                 width: 100%;
                 max-width: 300px;
             }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .category-card, .feature-item {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo"><img src="assets/BokhutloLogo.png" height="80" width="80"></a>
+            <a href="index.html" class="logo">
+                <img src="assets/BokhutloLogo.png" alt="Bokhutlo Farming Logo" class="logo-img">
+                Bokhutlo Farming
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="services.html" style="background: rgba(255,255,255,0.1);">Services</a></li>
-                                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About</a></li>
+                                <li><a href="services.html" style="background: rgba(212, 175, 55, 0.2);">Services</a></li>
 
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="page-header">
-        <h1>Our Services</h1>
-        <p>Comprehensive solutions across four key divisions, designed to meet your specific needs with precision and excellence</p>
+        <h1>Our Farming Services</h1>
+        <p>Comprehensive agricultural solutions designed to maximize yield, sustainability, and quality</p>
     </section>
 
     <section class="services-overview">
         <div class="section-header">
-            <h2>Our Service Divisions</h2>
-            <p>From professional cleaning to construction, catering, and farming - we deliver integrated solutions that transform spaces, build futures, and nurture growth</p>
+            <h2>Our Farming Divisions</h2>
+            <p>From livestock management to crop production - we deliver integrated farming solutions that nurture growth and ensure sustainability</p>
         </div>
 
         <div class="service-categories">
             <div class="category-card">
-                <div class="category-icon">🧹</div>
-                <h3>Professional Cleaning</h3>
-                <p>Industry-leading cleaning solutions for hospitals, schools, offices, and industrial facilities. We ensure spotless environments that promote health and productivity.</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🏗️</div>
-                <h3>Construction Services</h3>
-                <p>Complete building, renovation, and maintenance solutions for residential, commercial, and institutional clients. Quality craftsmanship that stands the test of time.</p>
-            </div>
-
-            <div class="category-card">
-                <div class="category-icon">🍽️</div>
-                <h3>Catering Solutions</h3>
-                <p>Professional catering services that elevate every occasion with quality and presentation. From corporate events to institutional requirements.</p>
+                <div class="category-icon">🐄</div>
+                <h3>Livestock Farming</h3>
+                <p>Professional livestock management focusing on animal welfare, health monitoring, and sustainable breeding practices for quality meat and dairy production.</p>
             </div>
 
             <div class="category-card">
                 <div class="category-icon">🌾</div>
-                <h3>Farming Division</h3>
-                <p>Sustainable agricultural practices focused on livestock farming with plans for expansion. Quality assurance and farm management expertise.</p>
+                <h3>Crop Production</h3>
+                <p>Diverse crop cultivation using sustainable methods, soil conservation techniques, and precision farming for optimal yield and quality.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">💧</div>
+                <h3>Irrigation Solutions</h3>
+                <p>Efficient water management systems including drip irrigation, water harvesting, and moisture monitoring to maximize resource utilization.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🌱</div>
+                <h3>Agricultural Consulting</h3>
+                <p>Expert guidance on farm planning, soil analysis, crop rotation strategies, and sustainable farming practices for optimal productivity.</p>
             </div>
         </div>
     </section>
@@ -498,167 +862,212 @@
     <section class="detailed-services">
         <div class="section-header">
             <h2>Service Details</h2>
-            <p>Explore our comprehensive range of services within each division</p>
+            <p>Explore our comprehensive range of farming services and solutions</p>
         </div>
 
         <div class="service-tabs">
             <div class="tab-buttons">
-                <button class="tab-btn active" data-tab="cleaning">Cleaning Services</button>
-                <button class="tab-btn" data-tab="construction">Construction</button>
-                <button class="tab-btn" data-tab="catering">Catering</button>
-                <button class="tab-btn" data-tab="farming">Farming</button>
+                <button class="tab-btn active" data-tab="livestock">Livestock Farming</button>
+                <button class="tab-btn" data-tab="crop">Crop Production</button>
+                <button class="tab-btn" data-tab="irrigation">Irrigation Solutions</button>
+                <button class="tab-btn" data-tab="consulting">Agricultural Consulting</button>
             </div>
 
-            <div class="tab-content active" id="cleaning-tab">
+            <div class="tab-content active" id="livestock-tab">
                 <div class="service-details">
-                    <h3>Professional Cleaning Services</h3>
-                    <p>Our professional cleaning division offers comprehensive solutions tailored to various environments. We use industry-best practices and high-quality cleaning agents to ensure optimal results.</p>
+                    <h3>Livestock Farming Services</h3>
+                    <p>Our professional livestock division offers comprehensive animal husbandry solutions focused on ethical treatment, health monitoring, and sustainable production practices. We ensure optimal conditions for animal welfare and quality production.</p>
                     
                     <div class="service-features">
                         <div class="feature-item">
-                            <div class="feature-icon">📅</div>
-                            <h4>Planned Maintenance</h4>
-                            <p>Scheduled cleaning programs designed to maintain pristine conditions with minimal disruption to your operations.</p>
+                            <div class="feature-icon">🏞️</div>
+                            <h4>Pasture Management</h4>
+                            <p>Rotational grazing systems that optimize pasture health while ensuring adequate nutrition for livestock throughout the year.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🌅</div>
-                            <h4>Daily Cleaning</h4>
-                            <p>Regular maintenance services to keep your facilities clean, organized, and presentable every day.</p>
+                            <div class="feature-icon">🐮</div>
+                            <h4>Cattle Breeding</h4>
+                            <p>Selective breeding programs focused on improving genetics for better meat quality, milk production, and disease resistance.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🔍</div>
-                            <h4>Deep Cleaning</h4>
-                            <p>Thorough, intensive cleaning targeting hard-to-reach areas and built-up grime for a completely refreshed environment.</p>
+                            <div class="feature-icon">🥛</div>
+                            <h4>Dairy Production</h4>
+                            <p>Professional dairy operations with emphasis on animal health, milk quality, and hygienic processing standards.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🧽</div>
-                            <h4>Carpet Cleaning</h4>
-                            <p>Specialized carpet care using professional equipment to remove stains, odors, and extend carpet life.</p>
+                            <div class="feature-icon">🐔</div>
+                            <h4>Free-Range Poultry</h4>
+                            <p>Ethical poultry farming with birds raised in natural environments, resulting in healthier animals and superior quality eggs and meat.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">👨‍🍳</div>
-                            <h4>Kitchen Cleaning</h4>
-                            <p>Sanitization and deep cleaning of commercial and institutional kitchens to meet health and safety standards.</p>
+                            <div class="feature-icon">💉</div>
+                            <h4>Animal Health Monitoring</h4>
+                            <p>Regular health checks, vaccination programs, and preventive care to ensure livestock wellbeing and productivity.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🧼</div>
-                            <h4>Floor Cleaning</h4>
-                            <p>Comprehensive floor care including stripping, waxing, polishing, and maintenance for all floor types.</p>
+                            <div class="feature-icon">🌿</div>
+                            <h4>Feed Management</h4>
+                            <p>Nutritionally balanced feeding programs using locally sourced ingredients to optimize growth and health.</p>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🏭</div>
-                            <h4>Industrial Cleaning</h4>
-                            <p>Specialized cleaning solutions for industrial facilities, warehouses, and manufacturing plants.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🛒</div>
-                            <h4>Cleaning Supplies</h4>
-                            <p>Supply of quality cleaning agents, equipment, and utensils to meet all your maintenance needs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="construction-tab">
-                <div class="service-details">
-                    <h3>Construction Services</h3>
-                    <p>Our construction division delivers comprehensive building, renovation, and maintenance solutions with a commitment to quality, safety, and timely completion.</p>
-                    
-                    <div class="service-features">
                         <div class="feature-item">
                             <div class="feature-icon">🏠</div>
-                            <h4>Residential Construction</h4>
-                            <p>Custom home building, renovations, and extensions tailored to your lifestyle and preferences.</p>
+                            <h4>Shelter Design</h4>
+                            <p>Design and construction of livestock shelters that provide protection, ventilation, and comfort for animals.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🏢</div>
-                            <h4>Commercial Projects</h4>
-                            <p>Office buildings, retail spaces, and commercial facilities built to specification and budget.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🏫</div>
-                            <h4>Institutional Facilities</h4>
-                            <p>Construction and renovation of schools, hospitals, and government buildings with specialized requirements.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🛠️</div>
-                            <h4>Renovations & Upgrades</h4>
-                            <p>Transforming existing spaces through strategic renovations, modernizations, and functional upgrades.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🔧</div>
-                            <h4>Maintenance Programs</h4>
-                            <p>Preventive and corrective maintenance plans to preserve building integrity and functionality.</p>
+                            <div class="feature-icon">📊</div>
+                            <h4>Production Records</h4>
+                            <p>Comprehensive tracking of breeding, growth, and production data to optimize operations and genetic selection.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="tab-content" id="catering-tab">
+            <div class="tab-content" id="crop-tab">
                 <div class="service-details">
-                    <h3>Catering Solutions</h3>
-                    <p>Our catering services combine culinary excellence with professional presentation, creating memorable dining experiences for all types of events and functions.</p>
+                    <h3>Crop Production Services</h3>
+                    <p>Our crop production division delivers sustainable farming solutions using modern techniques while respecting traditional agricultural wisdom. We focus on soil health, biodiversity, and optimal yields.</p>
                     
                     <div class="service-features">
                         <div class="feature-item">
-                            <div class="feature-icon">💼</div>
-                            <h4>Corporate Events</h4>
-                            <p>Professional catering for meetings, conferences, corporate functions, and business gatherings.</p>
+                            <div class="feature-icon">🌽</div>
+                            <h4>Maize & Grain Production</h4>
+                            <p>Large-scale cultivation of maize and other grains using precision farming techniques and sustainable soil management.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🎉</div>
-                            <h4>Special Occasions</h4>
-                            <p>Memorable catering for weddings, celebrations, anniversaries, and private parties.</p>
+                            <div class="feature-icon">🥬</div>
+                            <h4>Vegetable Farming</h4>
+                            <p>Diverse vegetable cultivation with emphasis on seasonal varieties, organic methods, and efficient harvesting techniques.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🏥</div>
-                            <h4>Institutional Catering</h4>
-                            <p>Reliable meal services for schools, hospitals, and other institutions with specific dietary requirements.</p>
+                            <div class="feature-icon">🍎</div>
+                            <h4>Orchard Management</h4>
+                            <p>Professional fruit orchard establishment and maintenance including pruning, pollination, and integrated pest management.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">📋</div>
-                            <h4>Menu Customization</h4>
-                            <p>Tailored menus developed to suit your event theme, dietary needs, and budget considerations.</p>
+                            <div class="feature-icon">🌍</div>
+                            <h4>Soil Conservation</h4>
+                            <p>Implementation of erosion control, cover cropping, and organic matter management to preserve and enhance soil health.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🍽️</div>
-                            <h4>Full-Service Setup</h4>
-                            <p>Complete catering service including setup, serving, and cleanup for a seamless experience.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content" id="farming-tab">
-                <div class="service-details">
-                    <h3>Farming Division</h3>
-                    <p>Our farming operations focus on sustainable practices and quality production, with current emphasis on livestock farming and plans for agricultural diversification.</p>
-                    
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">🐄</div>
-                            <h4>Livestock Farming</h4>
-                            <p>Professional livestock management focusing on animal welfare, health, and sustainable practices.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🌱</div>
-                            <h4>Sustainable Practices</h4>
-                            <p>Environmentally conscious farming methods that prioritize long-term sustainability and resource conservation.</p>
+                            <div class="feature-icon">📅</div>
+                            <h4>Crop Rotation Planning</h4>
+                            <p>Strategic crop rotation schedules to optimize soil fertility, break pest cycles, and improve overall farm productivity.</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">✅</div>
-                            <h4>Quality Assurance</h4>
-                            <p>Rigorous quality control measures ensuring high standards across all farming operations.</p>
+                            <h4>Organic Certification</h4>
+                            <p>Guidance and implementation of organic farming practices to meet certification standards for premium markets.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🐞</div>
+                            <h4>Integrated Pest Management</h4>
+                            <p>Ecological pest control methods that minimize chemical use while protecting crops from damage.</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">📈</div>
-                            <h4>Agricultural Expansion</h4>
-                            <p>Strategic growth plans to diversify into additional agricultural ventures beyond current livestock operations.</p>
+                            <h4>Yield Optimization</h4>
+                            <p>Data-driven approaches to maximize crop yields through optimal planting schedules, nutrient management, and harvest timing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="irrigation-tab">
+                <div class="service-details">
+                    <h3>Irrigation Solutions</h3>
+                    <p>Our irrigation division specializes in efficient water management systems designed to maximize agricultural productivity while conserving precious water resources through smart technology and sustainable practices.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">💦</div>
+                            <h4>Drip Irrigation Systems</h4>
+                            <p>Precision watering systems that deliver water directly to plant roots, reducing evaporation and runoff while improving efficiency.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">👨‍🌾</div>
-                            <h4>Farm Management</h4>
-                            <p>Comprehensive farm management services optimizing operations for productivity and profitability.</p>
+                            <div class="feature-icon">☔</div>
+                            <h4>Water Harvesting</h4>
+                            <p>Collection and storage of rainwater for agricultural use, reducing dependence on external water sources.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⏰</div>
+                            <h4>Automated Scheduling</h4>
+                            <p>Smart irrigation controllers that adjust watering based on weather conditions, soil moisture, and plant needs.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <h4>Moisture Monitoring</h4>
+                            <p>Soil moisture sensors that provide real-time data to optimize irrigation timing and prevent overwatering.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔧</div>
+                            <h4>System Maintenance</h4>
+                            <p>Regular inspection, cleaning, and repair of irrigation components to ensure optimal performance and longevity.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌧️</div>
+                            <h4>Flood Irrigation</h4>
+                            <p>Traditional and modern flood irrigation methods for crops that benefit from this water application approach.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💡</div>
+                            <h4>Solar-Powered Systems</h4>
+                            <p>Eco-friendly irrigation solutions powered by solar energy, reducing operational costs and environmental impact.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌱</div>
+                            <h4>Water-Efficient Design</h4>
+                            <p>Custom irrigation system design that matches water delivery to specific crop needs and field topography.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="consulting-tab">
+                <div class="service-details">
+                    <h3>Agricultural Consulting</h3>
+                    <p>Our consulting services provide expert guidance to help farmers optimize operations, improve sustainability, and increase profitability through data-driven recommendations and practical farming wisdom.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">🗺️</div>
+                            <h4>Farm Planning & Design</h4>
+                            <p>Comprehensive farm layout design considering topography, soil types, water availability, and operational efficiency.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🧪</div>
+                            <h4>Soil Analysis Services</h4>
+                            <p>Professional soil testing and interpretation to guide fertilizer application, pH adjustment, and soil amendment strategies.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔄</div>
+                            <h4>Crop Rotation Strategies</h4>
+                            <p>Development of sustainable crop rotation plans that improve soil health, control pests, and optimize yields.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🏪</div>
+                            <h4>Market Access Support</h4>
+                            <p>Guidance on connecting with local markets, meeting quality standards, and developing value-added products.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📋</div>
+                            <h4>Sustainability Audits</h4>
+                            <p>Comprehensive assessment of farming practices with recommendations for improving environmental sustainability.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💰</div>
+                            <h4>Financial Planning</h4>
+                            <p>Budgeting, cost analysis, and financial planning services to improve farm profitability and investment decisions.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌾</div>
+                            <h4>Regenerative Agriculture</h4>
+                            <p>Implementation of regenerative practices that restore soil health, increase biodiversity, and sequester carbon.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📚</div>
+                            <h4>Farmer Training</h4>
+                            <p>Workshops and hands-on training programs to build capacity in sustainable farming techniques and modern agricultural practices.</p>
                         </div>
                     </div>
                 </div>
@@ -666,55 +1075,96 @@
         </div>
     </section>
 
-    <section class="service-process">
+    <section class="farming-process">
         <div class="section-header">
-            <h2 style="color: white;">Our Service Process</h2>
-            <p style="color: rgba(255,255,255,0.9);">A streamlined approach to delivering excellence across all our services</p>
+            <h2 style="color: white;">Our Farming Process</h2>
+            <p style="color: rgba(255,255,255,0.9);">A systematic approach to sustainable farming that delivers consistent quality</p>
         </div>
 
         <div class="process-steps">
             <div class="process-step">
                 <div class="step-number">1</div>
-                <div class="step-icon">📞</div>
-                <h4>Consultation</h4>
-                <p>We begin with understanding your specific needs, requirements, and expectations.</p>
+                <div class="step-icon">🌱</div>
+                <h4>Soil Preparation</h4>
+                <p>Comprehensive soil analysis and preparation using sustainable methods to create optimal growing conditions.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">2</div>
-                <div class="step-icon">📋</div>
-                <h4>Customized Plan</h4>
-                <p>We develop a tailored solution that addresses your unique situation and goals.</p>
+                <div class="step-icon">🌾</div>
+                <h4>Planting & Sowing</h4>
+                <p>Strategic planting schedules and techniques matched to crop requirements and seasonal conditions.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">3</div>
-                <div class="step-icon">✅</div>
-                <h4>Approval</h4>
-                <p>We present our proposal for your review and approval before proceeding.</p>
+                <div class="step-icon">💧</div>
+                <h4>Irrigation & Care</h4>
+                <p>Precision water management and ongoing crop care using sustainable practices and monitoring.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">4</div>
-                <div class="step-icon">🚀</div>
-                <h4>Implementation</h4>
-                <p>Our professional team executes the plan with precision and attention to detail.</p>
+                <div class="step-icon">✅</div>
+                <h4>Quality Monitoring</h4>
+                <p>Regular inspection and quality assessment to ensure optimal growth and identify issues early.</p>
             </div>
             <div class="process-step">
                 <div class="step-number">5</div>
-                <div class="step-icon">⭐</div>
-                <h4>Quality Check</h4>
-                <p>We conduct thorough quality assurance to ensure exceptional results.</p>
+                <div class="step-icon">🤲</div>
+                <h4>Harvesting</h4>
+                <p>Timely harvesting using appropriate techniques to maximize yield and preserve product quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="section-header">
+            <h2>Benefits of Our Farming Services</h2>
+            <p>Why choose Bokhutlo Farming Enterprise for your agricultural needs</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h4>Sustainable Practices</h4>
+                <p>Our farming methods prioritize long-term sustainability and environmental stewardship:</p>
+                <ul>
+                    <li>Regenerative agriculture techniques</li>
+                    <li>Water conservation and management</li>
+                    <li>Soil health preservation</li>
+                    <li>Biodiversity enhancement</li>
+                </ul>
+            </div>
+            <div class="benefit-card">
+                <h4>Quality Assurance</h4>
+                <p>We maintain rigorous standards throughout our farming operations:</p>
+                <ul>
+                    <li>Regular quality monitoring</li>
+                    <li>Traceability from farm to market</li>
+                    <li>Compliance with safety standards</li>
+                    <li>Continuous improvement processes</li>
+                </ul>
+            </div>
+            <div class="benefit-card">
+                <h4>Expert Support</h4>
+                <p>Our team provides comprehensive support at every stage:</p>
+                <ul>
+                    <li>Technical guidance and training</li>
+                    <li>Problem-solving assistance</li>
+                    <li>Market access support</li>
+                    <li>Ongoing consultation services</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section class="cta-section">
-        <h3>Ready to Experience Our Services?</h3>
-        <p>Whether you need professional cleaning, construction expertise, catering solutions, or farming services, we're here to deliver excellence tailored to your needs.</p>
+        <h3>Ready to Partner with Our Farm?</h3>
+        <p>Whether you're looking for fresh produce, livestock products, irrigation solutions, or farming consultation, we're here to deliver excellence tailored to your agricultural needs.</p>
         <a href="index.html#contact" class="btn btn-primary">Get in Touch Today</a>
     </section>
 
     <footer>
-        <p>&copy; 2025 Bokhutlo Trading and Enterprise (Pty) Ltd. All rights reserved.</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">Excellence Across Every Industry</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Bokhutlo Farming Enterprise (Pty) Ltd. All rights reserved.</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">Sustainable Farming for Future Generations</p>
+        </div>
     </footer>
 
     <script>
@@ -735,11 +1185,15 @@
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.style.transform = 'translateY(0)';
+                });
                 tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active class to clicked button
+                // Add active class to clicked button with animation
                 button.classList.add('active');
+                button.style.transform = 'translateY(-3px)';
                 
                 // Show corresponding content
                 const tabId = button.getAttribute('data-tab');
@@ -772,15 +1226,47 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
+                    
+                    // Special animation for category cards
+                    if (entry.target.classList.contains('category-card')) {
+                        entry.target.style.transitionDelay = '0.1s';
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.category-card, .feature-item, .process-step').forEach(el => {
+        // Observe all cards for animation
+        document.querySelectorAll('.category-card, .feature-item, .process-step, .benefit-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
+        });
+
+        // Add hover effect to CTA buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.animation = 'pulse 0.5s';
+            });
+            
+            btn.addEventListener('animationend', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Add interactive effect to tab buttons on hover
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(-3px)';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.transform = 'translateY(0)';
+                }
+            });
         });
     </script>
 </body>
